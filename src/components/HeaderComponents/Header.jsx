@@ -4,7 +4,9 @@ function Header({ Logo }) {
    return (
       <div className="header">
          {/* <Logo /> */}
-         <Link to="/">Logo</Link>
+         <Link to="/">
+            <img className="mylogo" src={Logo} />
+         </Link>
          <Link to="/login">Login</Link>
          <Link to="/login?signout">Sign Out</Link>
       </div>
