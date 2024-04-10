@@ -1,6 +1,6 @@
 import "./AuthenticationCard.scss";
 import { Link } from "react-router-dom";
-function AuthenticationCard({ Logo, Company, PrimaryColor, SecondaryColor }) {
+function AuthenticationCard({ Logo, Company, PrimaryColor }) {
    return (
       <div className="container">
          <img src={Logo} className="logo" />
@@ -13,13 +13,6 @@ function AuthenticationCard({ Logo, Company, PrimaryColor, SecondaryColor }) {
             >
                Log in with {Company}
             </Link>
-         </div>
-         <div id="loggedin">
-            <div id="user-profile"> </div>
-            <div id="oauth"> </div>
-            <button className="btn btn-default" id="obtain-new-token">
-               Obtain new token using the refresh token
-            </button>
          </div>
       </div>
    );
