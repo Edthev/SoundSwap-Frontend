@@ -28,12 +28,8 @@ padding: 15px;
 
 .container{
     margin-right: 1rem;
+    flex-direction: column;
     &:hover{
       //  background-color: #1F1F1F;
     }
  }
-
-#login{
-   display: flex;
-   flex-direction: column;
-   }
