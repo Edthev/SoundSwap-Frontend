@@ -7,8 +7,9 @@ function Header({ Logo }) {
          <Link to="/">
             <img className="mylogo" src={Logo} />
          </Link>
-         <Link to="/login">Login</Link>
-         <Link to="/login?signout">Sign Out</Link>
+         {/* <Link to="/login">Login</Link> */}
+         <Link to="/logout">Sign Out</Link>
+         <Link to="/merge">Merge</Link>
       </div>
    );
 }
