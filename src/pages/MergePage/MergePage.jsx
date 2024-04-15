@@ -4,8 +4,12 @@ import axios from "axios";
 import cors from "cors";
 import "./MergePage.scss";
 function MergePage() {
-   const [playlist, setPlaylist] = useState(null);
+   const [playlist, setPlaylist] = useState([null]);
    const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+   console.log("playlist", playlist);
+   console.log("selectedPlaylist", selectedPlaylist);
+   console.log("selectedPlaylist is empty:", selectedPlaylist == null);
+   // console.log("selectedPlaylist:", selectedPlaylist.name);
    const navigate = useNavigate();
    const cookies = document.cookie;
    function getCookie(cookieName) {
@@ -39,8 +43,9 @@ function MergePage() {
       // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
       return (await fetchWebApi("v1/me/playlists", "GET")).items;
    }
-   const selectMainPlaylist = (id) => {
-      setSelectedPlaylist(id);
+
+   const handlePlaylistClick = (clickedPlaylist) => {
+      setSelectedPlaylist(clickedPlaylist);
    };
 
    useEffect(() => {
@@ -49,8 +54,11 @@ function MergePage() {
          console.log("res:", res);
          setPlaylist(res);
       };
+      console.log("getPlaylist executed");
       getPlaylists();
    }, []);
+
+   useEffect(() => {}, [selectedPlaylist]);
 
    // TODO button to get playlists(each can be selected)
    // TODO button to get selected playlist songs
@@ -67,10 +75,14 @@ function MergePage() {
             </h2>
             <span id="avatar"></span>
             <div>
-               {selectedPlaylist === null ? (
-                  <p></p>
+               {selectedPlaylist == null ? (
+                  <p>Please Select Playlist</p>
                ) : (
-                  <p>Selected Playlist:{selectedPlaylist}</p>
+                  <div>
+                     <img className="selectedPlaylist" src={selectedPlaylist.images[0].url} />
+                     <p>{selectedPlaylist.name}</p>
+                     <Link>Transfer to Youtube</Link>
+                  </div>
                )}
             </div>
             <div>
@@ -81,19 +93,28 @@ function MergePage() {
                link
             </a>
             <div>
-               {playlist == null ? (
+               {playlist == null || playlist[0] == null ? (
                   <p>Loading...</p>
                ) : (
-                  playlist.map((single, i) => {
-                     return (
-                        <div key={i} className="row">
-                           <img src={single.images[0].url} />
+                  playlist.map((singlePlaylist, i) => {
+                     return selectedPlaylist == singlePlaylist ? (
+                        <div></div>
+                     ) : (
+                        <div
+                           key={i}
+                           className="row"
+                           onClick={() => {
+                              handlePlaylistClick(singlePlaylist);
+                           }}
+                        >
+                           <img src={singlePlaylist.images[0].url} />
+
                            <div>
                               <h3>Title:</h3>
-                              <p>{single.name}</p>
+                              <p>{singlePlaylist.name}</p>
                               <h3>Desc: </h3>
-                              <p>{`${single.description}`}</p>
-                              <Link to={single.href}>Link</Link>
+                              <p>{`${singlePlaylist.description}`}</p>
+                              <Link to={singlePlaylist.href}>Link</Link>
                            </div>
                         </div>
                      );
