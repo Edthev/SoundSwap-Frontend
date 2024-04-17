@@ -3,14 +3,59 @@
     flex-direction: row;
 }
 .indexPage__parent{
-    a{
+    .start{
         padding: 1rem 4rem;
         border-radius: 50px;
-        background-color: green;
+        background-color: #222;
         color: white;
         &:hover{
-            color: darkblue;
-            background-color: lightgreen;
+            color: black;
+            background-color: #333;
         }
     }
+    .buttons{
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+            a{
+                font-weight: bold;
+                color:white;
+                &:hover{
+                    color: black;
+                }
+            }
+
+    }
+    .hero{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: grey;
+        width: 100vw;
+        height: 40vw;
+        z-index: -3;
+        // background: url("../../assets/musicVideo.mp4");
+    }
+    .bottom{
+        position: absolute;
+        width: 1080px;
+        top:80%;
+        left:12%;
+        display: flex;
+
+        justify-content: space-between;
+        .miniBox{
+            display: flex;
+            justify-content: center;
+            height: 100px;
+            
+            width: 30%;
+            background-color: #333;
+        }
+    }
+}
+.video{
+    z-index: 99;
 }

@@ -9,7 +9,7 @@ function App() {
    const navigate = useNavigate();
    const googleScopes = "https://www.googleapis.com/auth/youtube";
    const googleResponse_type = "code";
-   const redirect_uri = "http://localhost:3010/login";
+   const redirect_uri = "http://localhost:3000/login";
    const googleClientId =
       "212792732291-rdqpl8phec3dq4sjs1ia0e3vb16r7gau.apps.googleusercontent.com";
    const spotifyClientId = "3cef3dbad747490d91a765962b8a7b40";
@@ -33,13 +33,11 @@ function App() {
       );
    }
    let storedAuthorizationCode = "";
-   const GoogleAuthorizationCode = sessionStorage.getItem("Google_User_AuthorizationCode");
-   const SpotifyAuthorizationCode = sessionStorage.getItem("Spotify_User_AuthorizationCode");
+   const GoogleAuthorizationCode = document.cookie.includes("google_session_token");
+   const SpotifyAuthorizationCode = document.cookie.includes("spotify_session_token");
    if (GoogleAuthorizationCode || SpotifyAuthorizationCode) {
       storedAuthorizationCode = GoogleAuthorizationCode ? "Youtube" : "Spotify";
-      console.log(GoogleAuthorizationCode);
       if (GoogleAuthorizationCode && SpotifyAuthorizationCode) {
-         console.log(2);
          storedAuthorizationCode = "YoutubeSpotify";
       }
    }
@@ -53,19 +51,19 @@ function App() {
    return (
       <div className="loginPage">
          <div id="parent">
-            {/* <AuthenticationCard
+            <AuthenticationCard
                Company="Youtube"
                Logo={YoutubeLogo}
                PrimaryColor={"#FF0000"}
                Display={storedAuthorizationCode}
-               URL={`https://accounts.google.com/o/oauth2/v2/auth?scope=${googleScopes}&response_type=${googleResponse_type}&redirect_uri=${redirect_uri}&client_id=${googleClientId}`}
-            /> */}
+               URL={`http://localhost:8888/login_google`}
+            />
             <AuthenticationCard
                Company="Spotify"
                Logo={SpotifyLogo}
                PrimaryColor={"#1DB954"}
                Display={storedAuthorizationCode}
-               URL={`https://accounts.spotify.com/authorize?client_id=${spotifyClientId}&scope=${spotifyScope}&redirect_uri=${redirect_uri}&response_type=code`}
+               URL={`http://localhost:8888/login?Youtube`}
             />
          </div>
          <div className="popUp">

@@ -12,7 +12,7 @@ function AuthenticationCard({ Logo, Company, PrimaryColor, Display, URL }) {
             <div id="login">
                <h1 className="mainText">Authenticate With {Company}:</h1>
                <Link
-                  to={"http://localhost:8888/login?" + Company}
+                  to={URL}
                   className="btn btn-primary"
                   style={{ backgroundColor: PrimaryColor }}
                >

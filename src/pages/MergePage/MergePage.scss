@@ -22,5 +22,13 @@
     }
 }
 .selectedPlaylist{
+    width: 100%;
+    height: 35%;
+
+}
+.selectedPlaylistImage{
     width:50%
+}
+.songList{
+    overflow: scroll;
 }
