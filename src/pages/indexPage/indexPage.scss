@@ -37,8 +37,13 @@
         height: 40vw;
         z-index: -3;
         // background: url("../../assets/musicVideo.mp4");
+        .video{
+            z-index: -5;
+            width: 71.5%;
+        }
     }
     .bottom{
+        z-index: 99;
         position: absolute;
         width: 1080px;
         top:80%;

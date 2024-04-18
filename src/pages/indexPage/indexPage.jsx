@@ -4,6 +4,7 @@ import SpotifyLogo from "../../assets/Spotify_logo_with_text.svg";
 import YoutubeLogo from "../../assets/YouTube_Logo_2017.svg";
 import video from "../../assets/musicVideo.mp4";
 import { Link } from "react-router-dom";
+
 function IndexPage() {
    const isSignedIn = () => {
       // if()
@@ -13,7 +14,7 @@ function IndexPage() {
    return (
       <div className="indexPage__parent">
          <div className="hero">
-            <video className="video" muted loop>
+            <video className="video" autoPlay muted loop>
                <source className="hero" src={video} type="video/mp4" />
                Your browser does not support the video tag.
             </video>
