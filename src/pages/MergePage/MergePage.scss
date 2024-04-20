@@ -1,0 +1,58 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color:white;
+    &:hover{
+        background-color: #000;
+    }
+    h3{
+        padding: .5rem;
+    }
+    img{
+        width: 30%;
+    }
+    div{
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    }
+}
+.selectedPlaylist{
+    padding-top: 200px;
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+
+}
+.selectedPlaylistImage{
+    width:100%
+}
+.songList{
+    height: 30%;
+    max-height: 400px;
+    overflow: scroll;
+    padding-left: 1rem;
+}
+
+.selectedPlaylistAndSongs{
+    display: flex;
+    justify-content: center;
+}
+.transferButton{
+    // display: flex;
+    justify-self: center;
+margin: 1rem;
+border-radius: 50px;
+    background-color: red;
+    color: white;
+    // width: 20%;
+    &:hover{
+        background-color: darkred;
+        color: white;
+    }
+}

@@ -1,0 +1,35 @@
+#ogin, #loggedin {
+    display: none;
+ }
+ .text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+ }
+
+#mainText{
+      //   color: rgba(29, 185, 84, .7);
+}
+.logo{
+    width:500px;
+    height:300px;
+}
+.btn {
+   color: white;
+   &:hover{
+   color: white;
+   opacity: 70%;
+}
+padding: 15px;
+// background-color: rgba(29, 185, 84, 1);
+
+}
+
+.container{
+    margin-right: 1rem;
+    flex-direction: column;
+    &:hover{
+      //  background-color: #1F1F1F;
+    }
+ }
